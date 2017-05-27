@@ -1,0 +1,29 @@
+﻿{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:63929/",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "", // POI: Remove this "api/values" as we want F5 to open default index.html and not /api/values.
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "AspNetCore_Angular4_SetupProject": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "", // POI: Remove this "api/values" as we want F5 to open default index.html and not /api/values.
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:63930"
+    }
+  }
+}
