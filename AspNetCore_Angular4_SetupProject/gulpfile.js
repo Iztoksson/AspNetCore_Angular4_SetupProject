@@ -1,18 +1,24 @@
-﻿/// <binding AfterBuild='default' />
+﻿/// <binding AfterBuild='default' Clean='cleanup' />
 // POI: !! Must be absolute first line in this document!! 
 //      This line tells VS to run task 'default' after each build so app files are copied over to wwwroot folder.
 
 var gulp = require('gulp');
+var del = require('del'); // POI: This is needed for 'cleanup' task. Make sure you have this in package.json.
 
 var libs = './wwwroot/libs/';
 
-// POI: Copy everything from ./app folder into wwwroot folder.
+// POI: List of folders and files to copy from ./app folder into wwwroot folder.
 var paths = {
-    scripts: ['app/**/*.js', 'app/**/*.ts', 'app/**/*.map'],
+    scripts: ['app/**/*.js'],
 };
-// POI: This 
+// POI: This is the default task which copies .js files (our application) to wwwroot.
 gulp.task('default', function () {
     gulp.src(paths.scripts).pipe(gulp.dest('wwwroot/app'))
+});
+
+// POI: This task cleans (deletes) every file in wwwroot/app folder and copies fresh compiled files.
+gulp.task('cleanup', function () {
+    return del(['wwwroot/app/**/*']);
 });
 
 // POI: Restore or init required packages and dependency modules. Run this on-demand, don't put it in each "AfterBuild" (see first POI).
